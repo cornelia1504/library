@@ -1,0 +1,15 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static "css/my.css" %}">
+</head>
+<body>
+<h1> The list of books </h1>
+<ul>
+    {% for book in books %}
+        <li><a href="{% url 'book4' book.bookid %}">Title:  {{ book.title }}</a>; Author:  {{ book.author }}; Description:  {{ book.description }}; </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
