@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 from libraryapp.views import vw_home, vw_book, vw_book2, vw_book3, vw_books, \
-    vw_book4, vw_books2, vw_books3, vw_books4
+    vw_book4, vw_books2, vw_books3, vw_books4, vw_book_form
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +31,6 @@ urlpatterns = [
     path('books2/', vw_books2),
     path('books3/', vw_books3),
     path('books4/', vw_books4),
+    path('book_search_form/', vw_book_form),
+
 ]

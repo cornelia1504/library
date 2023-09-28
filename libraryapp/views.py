@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from libraryapp.models import Book
+from .forms import FormSearchBook
 
 def vw_books4(request, ):
     return render(request, "book_list4.html", {"books": Book.objects.all()})
@@ -50,3 +51,17 @@ def vw_book(request):
     html = "<html><body><h1>Alice in wonderland</h1><h2>Lewis Carroll</h2><p>It is about a girl in a phntasy world</p></body></html>"
     return HttpResponse(html)
 
+#@login_required
+def vw_book_form(request): # a form search
+    if request.method == "POST":
+        form = FormSearchBook(request.POST)
+        if form.is_valid():
+            #formperson = form.save(commit=False)
+            title_word = form.title
+            print(title_word)
+            book_lst = Book.objects.filter(title__contains=title_word)  # [<Book ...>]
+            print(book_lst)
+            return render(request, "book_list3.html", {"books": Book.objects.all()})
+    else:
+        form = FormSearchBook()
+    return render(request, 'book_form_search.html', {'form': form})

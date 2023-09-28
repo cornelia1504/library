@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<h1>Example of Search Form</h1>
+<p>Enter a title </p>
+<form method="POST" class="post-form">{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="save btn btn-default">Search</button>
+</form>
+</body>
+</html>
